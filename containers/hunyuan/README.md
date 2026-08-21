@@ -17,7 +17,7 @@ The image-to-shape stage is included. Hunyuan Paint, training, Blender, Gradio a
 Put the intact reference image here:
 
 ```text
-data/scenes/global/reference/intact_ref.png
+data/scenes/reference/intact_ref.png
 ```
 
 A clean image with the complete silhouette visible is best. A transparent background is ideal; the notebook can also run Hunyuan's background remover.

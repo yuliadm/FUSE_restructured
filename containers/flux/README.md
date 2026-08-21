@@ -74,7 +74,7 @@ Publishing to Hunyuan is disabled by default. After inspection, set
 `PUBLISH_TO_HUNYUAN = True`; the notebook then copies the chosen image to:
 
 ```text
-data/scenes/global/reference/pogo_complete.png
+data/scenes/reference/pogo_complete.png
 ```
 
 An existing file is backed up before replacement.

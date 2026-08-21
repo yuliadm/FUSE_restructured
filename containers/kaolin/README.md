@@ -2,10 +2,10 @@
 
 Consumes FUSE VGGT Container & FUSE Hunyuan Container outputs:
 ```
- - data/cleaned_geometry/global/broken_clean.ply
- - data/cleaned_geometry/global/broken_clean_normals.ply
- - data/vggt_outputs/global/raw_vggt_cloud.ply
- - data/scenes/global/reference/
+ - data/cleaned_geometry/broken_clean.ply
+ - data/cleaned_geometry/broken_clean_normals.ply
+ - data/vggt_outputs/raw_vggt_cloud.ply
+ - data/scenes/reference/
 ```
 
 Tasks:
