@@ -1,43 +1,39 @@
 services:
-  kaolin:
+  gpu:
     build:
       context: .
       dockerfile: Dockerfile
       args:
         USER_ID: "${HOST_UID:-1000}"
         GROUP_ID: "${HOST_GID:-1000}"
-        KAOLIN_VERSION: "0.18.0"
 
-    image: fuse-kaolin:torch2.5.1-cu124
-    container_name: fuse-kaolin
+    image: fuse-gpu:vggt-omega_hunyuan3d2.1_kaolin0.18
+    container_name: fuse-gpu
 
-    # The runtime identity must match the identity created during the build.
     user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
-
     gpus: all
     shm_size: "8gb"
     init: true
 
     ports:
-      - "127.0.0.1:${KAOLIN_PORT:-8891}:8891"
+      - "127.0.0.1:${FUSE_GPU_PORT:-8890}:8890"
+
+    env_file:
+      - .env   # HF_TOKEN for facebook/VGGT-Omega (gated) — see configure-env.sh
 
     volumes:
-      # compose.yaml is expected at FUSE/containers/kaolin/compose.yaml.
-      # All host directories must exist before the container starts.
       - type: bind
         source: "${FUSE_NOTEBOOKS_DIR:-../../notebooks}"
         target: /workspace/notebooks
         bind:
           create_host_path: false
-
       - type: bind
         source: "${FUSE_DATA_DIR:-../../data}"
         target: /workspace/data
         bind:
           create_host_path: false
-
       - type: bind
-        source: "${FUSE_KAOLIN_CACHE_DIR:-./cache}"
+        source: "${FUSE_GPU_CACHE_DIR:-./cache}"
         target: /workspace/.cache
         bind:
           create_host_path: false
@@ -45,11 +41,10 @@ services:
     environment:
       HOME: /home/fuse
       XDG_CACHE_HOME: /workspace/.cache/xdg
+      HF_HOME: /workspace/.cache/huggingface
       TORCH_HOME: /workspace/.cache/torch
-      MPLCONFIGDIR: /workspace/.cache/matplotlib
-      JUPYTER_CONFIG_DIR: /workspace/.cache/jupyter
-      IPYTHONDIR: /workspace/.cache/ipython
-      PYTHONPATH: /workspace
+      U2NET_HOME: /workspace/.cache/rembg
+      PYTHONPATH: /opt/vggt-omega:/opt/Hunyuan3D-2.1/hy3dshape:/workspace
       PYTHONUNBUFFERED: "1"
       PYTHONDONTWRITEBYTECODE: "1"
       PYTORCH_CUDA_ALLOC_CONF: "expandable_segments:True"
@@ -63,7 +58,7 @@ services:
       - -m
       - jupyterlab
       - --ip=0.0.0.0
-      - --port=8891
+      - --port=8890
       - --no-browser
       - --ServerApp.root_dir=/workspace
       - --IdentityProvider.token=

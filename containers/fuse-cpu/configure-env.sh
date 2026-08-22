@@ -4,9 +4,9 @@ set -euo pipefail
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 env_path="${script_dir}/.env"
 
-echo "FLUX.1 Fill [dev] requires each user to provide their own Hugging Face token."
+echo "VGGT-Omega requires each user to provide their own Hugging Face token."
 echo "First accept the model terms:"
-echo "  https://huggingface.co/black-forest-labs/FLUX.1-Fill-dev"
+echo "  https://huggingface.co/facebook/VGGT-Omega"
 echo "Then create a read token:"
 echo "  https://huggingface.co/settings/tokens"
 echo

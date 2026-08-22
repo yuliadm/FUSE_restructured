@@ -1,0 +1,15 @@
+# a list of shared dependencies for FUSE GPU modules (fuse-vggt.ipynb, fuse-hunyuan.ipynb, fuse-kaolin.ipynb)
+numpy==1.26.4
+scipy==1.14.1
+Pillow==11.3.0
+trimesh==4.5.3
+pymeshlab==2022.2.post3
+onnxruntime-gpu==1.19.2
+rembg==2.0.65
+open3d==0.18.0
+networkx==3.4.2
+plotly==5.24.1
+pandas==2.2.3
+jupyterlab==4.3.5
+ipykernel==6.29.5
+ipywidgets==8.1.5

@@ -1,0 +1,1 @@
+All three notebooks (`fuse-vggt.ipynb`, `fuse-hunyuan.ipynb`, `fuse-kaolin.ipynb`) run against this single kernel/environment — there is no need for three ipykernel kernelspecs, just three notebooks open in the same Lab instance, one tab each, run top-to-bottom in stage order.

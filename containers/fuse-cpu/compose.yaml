@@ -1,4 +1,4 @@
-name: fuse-app
+name: fuse-cpu
 
 services:
   app:
@@ -9,8 +9,8 @@ services:
         USER_ID: "${HOST_UID:-1000}"
         GROUP_ID: "${HOST_GID:-1000}"
 
-    image: fuse-app:streamlit-1.61.1
-    container_name: fuse-app
+    image: fuse-cpu:streamlit-1.61.1
+    container_name: fuse-cpu
     user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
     init: true
 
